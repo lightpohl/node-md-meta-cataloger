@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 let fs = require('fs');
 let program = require('commander');
 let cataloger = require('../src/index');
