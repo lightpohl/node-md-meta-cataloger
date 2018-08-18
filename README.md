@@ -7,7 +7,7 @@
 
 ## Installation
 
-`npm install --save node-md-meta-cataloger'
+`npm install --save node-md-meta-cataloger`
 
 ## How to Use
 
