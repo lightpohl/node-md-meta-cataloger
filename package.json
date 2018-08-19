@@ -1,6 +1,6 @@
 {
   "name": "node-md-meta-cataloger",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A module and CLI for parsing Markdown files (including YAML Front Matter metadata).",
   "keywords": [
     "markdown",
@@ -10,8 +10,8 @@
     "parser"
   ],
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/lightpohl/node-md-meta-cataloger.git"
+    "type": "git",
+    "url": "https://github.com/lightpohl/node-md-meta-cataloger.git"
   },
   "main": "./src/index.js",
   "bin": "./bin/bin.js",
