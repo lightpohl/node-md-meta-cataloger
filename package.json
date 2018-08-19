@@ -9,6 +9,10 @@
     "metadata",
     "parser"
   ],
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/lightpohl/node-md-meta-cataloger.git"
+  },
   "main": "./src/index.js",
   "bin": "./bin/bin.js",
   "files": [
