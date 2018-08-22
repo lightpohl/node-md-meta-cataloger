@@ -26,7 +26,7 @@ describe('cli', () => {
 
         let expected = expectedResult
             .concat()
-            .sort((a, b) => a.title > b.title);
+            .sort((a, b) => a.meta.title > b.meta.title);
 
         expect(result).toEqual(expected);
     });
