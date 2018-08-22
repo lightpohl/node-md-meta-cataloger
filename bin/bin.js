@@ -32,7 +32,7 @@ cataloger.readMarkdown(options.input).then(results => {
         if (typeof options.sort === 'function') {
             results.sort(options.sort);
         } else {
-            results.sort((a, b) => a[options.sort] > b[options.sort]);
+            results.sort((a, b) => a.meta[options.sort] > b.meta[options.sort]);
         }
     }
 
