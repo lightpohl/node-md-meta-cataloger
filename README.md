@@ -26,8 +26,23 @@
 | --sort \<key\>        | -s         | false    | sort by metadata key (ascending)      |
 | --reverse             | -r         | false    | reverse result sort                   |
 | --delete-filename-ext | -d         | false    | remove ".md" from filenames in result |
+| --config              | -c         | false    | path to .js config file               |
 | --version             | -v         | false    | output the version number             |
 | --help                | -h         | false    | output usage information              |
+
+#### Config File (--config)
+
+-   Using the `--config` option you can specify a path to a JS config file that should return an object with "camelCased" versions of the existing CLI options (plus extra).
+-   If an option exists in both the config file, and as a CLI option, the CLI option will receive priority.
+
+| Option            | Type             | Required | Description                                               |
+| ----------------- | ---------------- | -------- | --------------------------------------------------------- |
+| input             | String           | true     | input directory path                                      |
+| output            | String           | true     | output path of JSON result                                |
+| normalize         | Function         | false    | receives results as param, returned object is new result  |
+| sort              | Function\|String | false    | either a function for `sort` or a metadata key to sort by |
+| reverse           | Boolean          | false    | reverse result sort                                       |
+| deleteFilenameExt | Boolean          | false    | remove ".md" from filenames in result if true             |
 
 ### Node Module
 
