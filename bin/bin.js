@@ -3,7 +3,7 @@
 let fs = require('fs');
 let program = require('commander');
 let cataloger = require('../src/index');
-let evaluateOptions = require('./util').evaluateOptions;
+let evaluateOptions = require('./evaluate').evaluateOptions;
 
 program
     .version('1.0.0', '-v, --version')
@@ -15,25 +15,35 @@ program
         '-d, --delete-filename-ext',
         'remove ".md" from filenames in result'
     )
+    .option('-c, --config <path>', 'specify path to config file')
     .parse(process.argv);
 
-evaluateOptions(program);
+let options = evaluateOptions(program);
 
-cataloger.readMarkdown(program.input).then(results => {
-    if (program.deleteFilenameExt) {
+cataloger.readMarkdown(options.input).then(results => {
+    if (options.deleteFilenameExt) {
         results = results.map(item => {
             item.filename = item.filename.slice(0, -3);
             return item;
         });
     }
 
-    if (program.sort) {
-        results.sort((a, b) => a[program.sort] > b[program.sort]);
+    if (options.sort) {
+        if (typeof options.sort === 'function') {
+            results.sort(options.sort);
+        } else {
+            results.sort((a, b) => a[options.sort] > b[options.sort]);
+        }
     }
 
-    if (program.reverse) {
+    if (options.reverse) {
         results.reverse();
     }
+
+    if (options.normalize) {
+        results = options.normalize(results);
+    }
+
     let output = JSON.stringify(results, null, 2);
-    fs.writeFileSync(program.output, output, 'utf8');
+    fs.writeFileSync(options.output, output, 'utf8');
 });
