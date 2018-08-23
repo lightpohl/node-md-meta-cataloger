@@ -3,7 +3,8 @@
 let fs = require('fs');
 let program = require('commander');
 let cataloger = require('../src/index');
-let evaluateOptions = require('./evaluate').evaluateOptions;
+let {evaluateOptions} = require('./evaluate');
+let logger = require('./logger');
 
 program
     .version('1.0.0', '-v, --version')
@@ -21,6 +22,13 @@ program
 let options = evaluateOptions(program);
 
 cataloger.readMarkdown(options.input).then(results => {
+    if (results.length === 0) {
+        logger.error(
+            'ERROR: No ".md" files found. Please verify input directory path'
+        );
+        process.exit(1);
+    }
+
     if (options.deleteFilenameExt) {
         results = results.map(item => {
             item.filename = item.filename.slice(0, -3);
@@ -32,7 +40,20 @@ cataloger.readMarkdown(options.input).then(results => {
         if (typeof options.sort === 'function') {
             results.sort(options.sort);
         } else {
-            results.sort((a, b) => a.meta[options.sort] > b.meta[options.sort]);
+            results.sort((a, b) => {
+                if (
+                    typeof a.meta[options.sort] === 'undefined' ||
+                    typeof b.meta[options.sort] === 'undefined'
+                ) {
+                    logger.warn(
+                        `WARNING: "${a.filepath}" missing meta property "${
+                            options.sort
+                        }" for sorting`
+                    );
+                }
+
+                return a.meta[options.sort] > b.meta[options.sort];
+            });
         }
     }
 
@@ -46,4 +67,6 @@ cataloger.readMarkdown(options.input).then(results => {
 
     let output = JSON.stringify(results, null, 2);
     fs.writeFileSync(options.output, output, 'utf8');
+
+    logger.success('Complete!');
 });

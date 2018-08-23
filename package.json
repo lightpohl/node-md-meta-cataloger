@@ -37,6 +37,7 @@
   "author": "Joshua Pohl",
   "license": "MIT",
   "dependencies": {
+    "chalk": "^2.4.1",
     "commander": "^2.17.1",
     "glob": "^7.1.2",
     "js-yaml": "^3.12.0"

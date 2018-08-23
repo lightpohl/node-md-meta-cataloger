@@ -1,5 +1,5 @@
-/* eslint-disable no-console */
 let path = require('path');
+let logger = require('./logger');
 
 const PROCESS_ROOT = process.cwd();
 
@@ -15,12 +15,12 @@ function evaluateOptions(clOptions) {
     }
 
     if (!combinedOptions.input) {
-        errorAndExit('Error: no input directory (--input) specified');
+        errorAndExit('ERROR: No input directory (--input) specified');
     } else if (!combinedOptions.output) {
-        errorAndExit('Error: no output path specified');
+        errorAndExit('ERROR: No output path specified');
     } else if (!combinedOptions.output.endsWith('.json')) {
         errorAndExit(
-            `Error: path '${combinedOptions.ouput}' does not end in '.json'`
+            `ERROR: Path "${combinedOptions.ouput}" does not end in ".json"`
         );
     }
 
@@ -28,8 +28,7 @@ function evaluateOptions(clOptions) {
 }
 
 function errorAndExit(message) {
-    console.error(message);
-    console.error(`Run 'node-md-meta-cataloger --help' for usage information`);
+    logger.error(message);
     process.exit(1);
 }
 
