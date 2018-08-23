@@ -1,4 +1,5 @@
 let execSync = require('child_process').execSync;
+let fs = require('fs-extra');
 let originalResult = require('./samples/result');
 
 describe('cli', () => {
@@ -12,7 +13,7 @@ describe('cli', () => {
     test('should generated expected regular result', () => {
         execSync(`node bin/bin.js -i ./test/samples/ -o ./test/regular.json`);
         let result = require('./regular');
-        execSync(`rm ./test/regular.json`);
+        fs.removeSync('./test/regular.json');
 
         expect(result).toEqual(expectedResult);
     });
@@ -22,7 +23,7 @@ describe('cli', () => {
             `node bin/bin.js -i ./test/samples/ -o ./test/sort.json -s title`
         );
         let result = require('./sort');
-        execSync(`rm ./test/sort.json`);
+        fs.removeSync('./test/sort.json');
 
         let expected = expectedResult
             .concat()
@@ -36,7 +37,7 @@ describe('cli', () => {
             `node bin/bin.js -i ./test/samples/ -o ./test/reverse.json -s title -r`
         );
         let result = require('./reverse');
-        execSync(`rm ./test/reverse.json`);
+        fs.removeSync(`./test/reverse.json`);
 
         let expected = expectedResult
             .concat()
@@ -49,7 +50,7 @@ describe('cli', () => {
     test('should remove .md ext from filenames', () => {
         execSync(`node bin/bin.js -i ./test/samples/ -o ./test/ext.json -d`);
         let result = require('./ext');
-        execSync(`rm ./test/ext.json`);
+        fs.removeSync(`./test/ext.json`);
 
         let expected = expectedResult.concat().map(item => {
             return Object.assign(item, {filename: item.filename.slice(0, -3)});
@@ -61,7 +62,7 @@ describe('cli', () => {
     test('should use only config file', () => {
         execSync(`node bin/bin.js -c ./test/cataloger-regular.config`);
         let result = require('./test-config');
-        execSync(`rm ./test/test-config.json`);
+        fs.removeSync(`./test/test-config.json`);
 
         expect(result).toEqual(expectedResult);
     });
@@ -71,7 +72,7 @@ describe('cli', () => {
             `node bin/bin.js -c ./test/cataloger-regular.config -o ./test/override.json`
         );
         let result = require('./override');
-        execSync(`rm ./test/override.json`);
+        fs.removeSync(`./test/override.json`);
 
         expect(result).toEqual(expectedResult);
     });
@@ -81,7 +82,7 @@ describe('cli', () => {
             `node bin/bin.js -c ./test/cataloger-normalize.config -o ./test/normalize.json`
         );
         let result = require('./normalize');
-        execSync(`rm ./test/normalize.json`);
+        fs.removeSync(`./test/normalize.json`);
 
         let expected = expectedResult.concat().map(item => {
             return {title: item.meta.title};
