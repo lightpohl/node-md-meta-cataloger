@@ -41,12 +41,17 @@ cataloger.readMarkdown(options.input).then(results => {
             results.sort(options.sort);
         } else {
             results.sort((a, b) => {
-                if (
-                    typeof a.meta[options.sort] === 'undefined' ||
-                    typeof b.meta[options.sort] === 'undefined'
-                ) {
+                if (typeof a.meta[options.sort] === 'undefined') {
                     logger.warn(
                         `WARNING: "${a.filepath}" missing meta property "${
+                            options.sort
+                        }" for sorting`
+                    );
+                }
+
+                if (typeof b.meta[options.sort] === 'undefined') {
+                    logger.warn(
+                        `WARNING: "${b.filepath}" missing meta property "${
                             options.sort
                         }" for sorting`
                     );
