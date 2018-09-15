@@ -8,7 +8,7 @@ describe('cataloger', () => {
             expect(result).toEqual({
                 content: '<h1>Regular</h1>\n<p>lorem ipsum</p>',
                 meta: {
-                    title: 'test',
+                    title: 'regular',
                     author: 'joshua'
                 }
             });
@@ -22,7 +22,7 @@ describe('cataloger', () => {
             expect(result).toEqual({
                 content: '<h1>Space Before After</h1>\n<p>lorem ipsum</p>',
                 meta: {
-                    title: 'test',
+                    title: 'space before after',
                     author: 'joshua'
                 }
             });
@@ -45,7 +45,7 @@ describe('cataloger', () => {
                 filename: 'nested.md',
                 filepath: 'test/samples/nested/nested.md',
                 meta: {
-                    title: 'test',
+                    title: 'nested',
                     author: 'joshua'
                 }
             },
@@ -60,7 +60,7 @@ describe('cataloger', () => {
                 filename: 'regular.md',
                 filepath: 'test/samples/regular.md',
                 meta: {
-                    title: 'test',
+                    title: 'regular',
                     author: 'joshua'
                 }
             },
@@ -69,7 +69,7 @@ describe('cataloger', () => {
                 filename: 'space-before-after.md',
                 filepath: 'test/samples/space-before-after.md',
                 meta: {
-                    title: 'test',
+                    title: 'space before after',
                     author: 'joshua'
                 }
             }

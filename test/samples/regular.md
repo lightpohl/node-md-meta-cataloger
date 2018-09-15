@@ -1,5 +1,5 @@
 ---
-title: test
+title: regular
 author: joshua
 ---
 

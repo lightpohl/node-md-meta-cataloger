@@ -1,5 +1,5 @@
 ---
-title: test
+title: space before after
 author: joshua
 ---
 

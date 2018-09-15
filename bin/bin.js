@@ -52,7 +52,7 @@ cataloger.readMarkdown(options.input).then(results => {
                     );
                 }
 
-                return a.meta[options.sort] > b.meta[options.sort];
+                return a.meta[options.sort] > b.meta[options.sort] ? 1 : -1;
             });
         }
     }
