@@ -1,4 +1,4 @@
-let cataloger = require('../src/index');
+let cataloger = require('../lib/index');
 
 describe('cataloger', () => {
     describe('parseMarkdown', () => {

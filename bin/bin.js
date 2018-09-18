@@ -2,7 +2,7 @@
 
 let fs = require('fs');
 let program = require('commander');
-let cataloger = require('../src/index');
+let cataloger = require('../lib/index');
 let {evaluateOptions} = require('./evaluate');
 let logger = require('./logger');
 
