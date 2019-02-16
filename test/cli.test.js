@@ -1,4 +1,5 @@
 let execSync = require('child_process').execSync;
+let _cloneDeep = require('lodash/cloneDeep');
 let fs = require('fs-extra');
 let originalResult = require('./samples/result');
 
@@ -6,8 +7,7 @@ describe('cli', () => {
     let expectedResult;
 
     beforeEach(() => {
-        // deep copy literal values
-        expectedResult = JSON.parse(JSON.stringify(originalResult));
+        expectedResult = _cloneDeep(originalResult);
     });
 
     test('should generated expected regular result', () => {
