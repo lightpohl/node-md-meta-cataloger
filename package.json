@@ -26,7 +26,7 @@
   ],
   "scripts": {
     "precommit": "lint-staged",
-    "prepush": "npm run lint",
+    "prepush": "npm run lint && npm run test",
     "lint": "eslint --ext .js .",
     "test": "jest",
     "release": "standard-version"
