@@ -21,7 +21,7 @@
   "main": "./lib/index.js",
   "bin": "./bin/bin.js",
   "files": [
-    "src",
+    "lib",
     "bin"
   ],
   "scripts": {
