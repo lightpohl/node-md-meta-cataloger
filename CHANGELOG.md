@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.5"></a>
+## [1.2.5](https://github.com/lightpohl/node-md-meta-cataloger/compare/v1.2.4...v1.2.5) (2019-06-25)
+
+
+
 <a name="1.2.4"></a>
 ## [1.2.4](https://github.com/lightpohl/node-md-meta-cataloger/compare/v1.2.3...v1.2.4) (2019-06-23)
 

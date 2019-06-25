@@ -1,6 +1,6 @@
 {
   "name": "node-md-meta-cataloger",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "A module and CLI for parsing Markdown files (including YAML Front Matter metadata).",
   "keywords": [
     "markdown",
