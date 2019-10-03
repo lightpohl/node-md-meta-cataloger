@@ -32,21 +32,6 @@ describe('cli', () => {
         expect(result).toEqual(expected);
     });
 
-    test('should reverse sort result', () => {
-        execSync(
-            `node bin/bin.js -i ./test/samples/ -o ./test/reverse.json -s title -r`
-        );
-        let result = require('./reverse');
-        fs.removeSync(`./test/reverse.json`);
-
-        let expected = expectedResult
-            .concat()
-            .sort((a, b) => a.title > b.title)
-            .reverse();
-
-        expect(result).toEqual(expected);
-    });
-
     test('should remove .md ext from filenames', () => {
         execSync(`node bin/bin.js -i ./test/samples/ -o ./test/ext.json -d`);
         let result = require('./ext');

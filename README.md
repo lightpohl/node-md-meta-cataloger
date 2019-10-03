@@ -24,7 +24,6 @@
 | --input \<dir\>       | -i         | true     | input directory path                  |
 | --output \<dir\>      | -o         | true     | output path of JSON result            |
 | --sort \<key\>        | -s         | false    | sort by metadata key (ascending)      |
-| --reverse             | -r         | false    | reverse result sort                   |
 | --delete-filename-ext | -d         | false    | remove ".md" from filenames in result |
 | --config              | -c         | false    | path to .js config file               |
 | --version             | -v         | false    | output the version number             |
@@ -41,7 +40,6 @@
 | output            | String           | true     | output path of JSON result                                |
 | normalize         | Function         | false    | receives results as param, returned object is new result  |
 | sort              | Function\|String | false    | either a function for `sort` or a metadata key to sort by |
-| reverse           | Boolean          | false    | reverse result sort                                       |
 | deleteFilenameExt | Boolean          | false    | remove ".md" from filenames in result if true             |
 
 ### Node Module

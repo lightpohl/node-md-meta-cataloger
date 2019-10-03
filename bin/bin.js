@@ -12,7 +12,6 @@ program
     .option('-i, --input <dir>', 'required: input directory path')
     .option('-o, --output <path>', 'required: output path of JSON result')
     .option('-s, --sort <key>', 'sort by metadata key (ascending)')
-    .option('-r, --reverse', 'reverse result sort')
     .option(
         '-d, --delete-filename-ext',
         'remove ".md" from filenames in result'
@@ -61,10 +60,6 @@ cataloger.readMarkdown(options.input).then(results => {
                 return a.meta[options.sort] > b.meta[options.sort] ? 1 : -1;
             });
         }
-    }
-
-    if (options.reverse) {
-        results.reverse();
     }
 
     if (options.normalize) {
