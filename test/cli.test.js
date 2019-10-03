@@ -18,20 +18,6 @@ describe('cli', () => {
         expect(result).toEqual(expectedResult);
     });
 
-    test('should sort results by metadata key', () => {
-        execSync(
-            `node bin/bin.js -i ./test/samples/ -o ./test/sort.json -s title`
-        );
-        let result = require('./sort');
-        fs.removeSync('./test/sort.json');
-
-        let expected = expectedResult
-            .concat()
-            .sort((a, b) => (a.meta.title > b.meta.title ? 1 : -1));
-
-        expect(result).toEqual(expected);
-    });
-
     test('should remove .md ext from filenames', () => {
         execSync(`node bin/bin.js -i ./test/samples/ -o ./test/ext.json -d`);
         let result = require('./ext');

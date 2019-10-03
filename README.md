@@ -23,7 +23,6 @@
 | --------------------- | ---------- | -------- | ------------------------------------- |
 | --input \<dir\>       | -i         | true     | input directory path                  |
 | --output \<dir\>      | -o         | true     | output path of JSON result            |
-| --sort \<key\>        | -s         | false    | sort by metadata key (ascending)      |
 | --delete-filename-ext | -d         | false    | remove ".md" from filenames in result |
 | --config              | -c         | false    | path to .js config file               |
 | --version             | -v         | false    | output the version number             |
@@ -34,13 +33,13 @@
 -   Using the `--config` option you can specify a path to a JS config file that should return an object with "camelCased" versions of the existing CLI options (plus extra).
 -   If an option exists in both the config file, and as a CLI option, the CLI option will receive priority.
 
-| Option            | Type             | Required | Description                                               |
-| ----------------- | ---------------- | -------- | --------------------------------------------------------- |
-| input             | String           | true     | input directory path                                      |
-| output            | String           | true     | output path of JSON result                                |
-| normalize         | Function         | false    | receives results as param, returned object is new result  |
-| sort              | Function\|String | false    | either a function for `sort` or a metadata key to sort by |
-| deleteFilenameExt | Boolean          | false    | remove ".md" from filenames in result if true             |
+| Option            | Type     | Required | Description                                              |
+| ----------------- | -------- | -------- | -------------------------------------------------------- |
+| input             | String   | true     | input directory path                                     |
+| output            | String   | true     | output path of JSON result                               |
+| normalize         | Function | false    | receives results as param, returned object is new result |
+| sort              | Function | false    | function for `sort`                                      |
+| deleteFilenameExt | Boolean  | false    | remove ".md" from filenames in result if true            |
 
 ### Node Module
 

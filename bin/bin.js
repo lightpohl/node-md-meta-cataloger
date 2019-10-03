@@ -11,7 +11,6 @@ program
     .version(version, '-v, --version')
     .option('-i, --input <dir>', 'required: input directory path')
     .option('-o, --output <path>', 'required: output path of JSON result')
-    .option('-s, --sort <key>', 'sort by metadata key (ascending)')
     .option(
         '-d, --delete-filename-ext',
         'remove ".md" from filenames in result'
@@ -37,29 +36,7 @@ cataloger.readMarkdown(options.input).then(results => {
     }
 
     if (options.sort) {
-        if (typeof options.sort === 'function') {
-            results.sort(options.sort);
-        } else {
-            results.sort((a, b) => {
-                if (typeof a.meta[options.sort] === 'undefined') {
-                    logger.warn(
-                        `WARNING: "${a.filepath}" missing meta property "${
-                            options.sort
-                        }" for sorting`
-                    );
-                }
-
-                if (typeof b.meta[options.sort] === 'undefined') {
-                    logger.warn(
-                        `WARNING: "${b.filepath}" missing meta property "${
-                            options.sort
-                        }" for sorting`
-                    );
-                }
-
-                return a.meta[options.sort] > b.meta[options.sort] ? 1 : -1;
-            });
-        }
+        results.sort(options.sort);
     }
 
     if (options.normalize) {
