@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/lightpohl/node-md-meta-cataloger/compare/v1.2.6...v2.0.0) (2019-10-03)
+
+
+### Features
+
+* remove --sort from cli, only accept function ([16ef924](https://github.com/lightpohl/node-md-meta-cataloger/commit/16ef924))
+* remove reverse options ([e2445c1](https://github.com/lightpohl/node-md-meta-cataloger/commit/e2445c1))
+
+
+### BREAKING CHANGES
+
+* sort has been removed from the CLI and only available
+as a config file option
+* remove --reverse from CLI and config support
+
+
+
 <a name="1.2.6"></a>
 ## [1.2.6](https://github.com/lightpohl/node-md-meta-cataloger/compare/v1.2.5...v1.2.6) (2019-10-03)
 
