@@ -2,12 +2,13 @@
 
 let fs = require('fs');
 let program = require('commander');
+let version = require('../package.json').version;
 let cataloger = require('../lib/index');
 let {evaluateOptions} = require('./evaluate');
 let logger = require('./logger');
 
 program
-    .version('1.0.0', '-v, --version')
+    .version(version, '-v, --version')
     .option('-i, --input <dir>', 'required: input directory path')
     .option('-o, --output <path>', 'required: output path of JSON result')
     .option('-s, --sort <key>', 'sort by metadata key (ascending)')
