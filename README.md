@@ -40,17 +40,17 @@
 
 ### Node Module
 
-#### `readMarkdown(path : String) : array or object`
+#### `readMarkdown(path: String): Promise<Array|Object>`
 
 Path parameter may reference a markdown file or folder containing markdown files.
 
-1. If passed a path to a folder, it returns an array of objects containing all markdown file content and their associated metadata.
-2. If passed a path to a file, it return an object containing the markdown content and its metadata.
+1. If passed a path to a folder, it returns a promise that resolves to an array of objects containing all markdown file content and their associated metadata.
+2. If passed a path to a file, it return a promise that resolves to an object containing the markdown content and its metadata.
 
 ```js
 import {readMarkdown} from 'node-md-meta-cataloger';
 
-let result = readMarkdown('path/to/folder');
+const result = await readMarkdown('path/to/folder');
 ```
 
 Example value of `result` above:
