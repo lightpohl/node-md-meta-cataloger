@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/lightpohl/node-md-meta-cataloger/compare/v2.0.0...v3.0.0) (2023-08-07)
+
+### BREAKING CHANGES
+
+* upgrade to Node 18
+* switch to using ES modules
+* update YAML parsing dependency
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/lightpohl/node-md-meta-cataloger/compare/v1.2.6...v2.0.0) (2019-10-03)
 
