@@ -1,26 +1,23 @@
 /* eslint-disable no-console */
-
-let chalk = require('chalk');
-
 function log(...messages) {
     console.log(...messages);
 }
 
 function warn(...messages) {
-    console.warn(chalk.yellowBright(...messages));
+    console.warn(...messages);
 }
 
 function error(...messages) {
-    console.error(chalk.redBright(...messages));
+    console.error(...messages);
 }
 
 function success(...messages) {
-    console.log(chalk.greenBright(...messages));
+    console.log(...messages);
 }
 
-module.exports = {
+export const logger = {
     log,
     warn,
     error,
-    success
+    success,
 };

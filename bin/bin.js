@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 
-let fs = require('fs');
-let program = require('commander');
-let version = require('../package.json').version;
-let cataloger = require('../lib/index');
-let {evaluateOptions} = require('./evaluate');
-let logger = require('./logger');
+import fs from 'fs';
+import {program} from 'commander';
+import {createRequire} from 'module';
+import * as cataloger from '../lib/index.js';
+import {evaluateOptions} from './evaluate.js';
+import {logger} from './logger.js';
+
+const require = createRequire(import.meta.url);
+const version = require('../package.json').version;
 
 program
     .version(version, '-v, --version')
@@ -13,38 +16,38 @@ program
     .option('-o, --output <path>', 'required: output path of JSON result')
     .option(
         '-d, --delete-filename-ext',
-        'remove ".md" from filenames in result'
+        'remove ".md" from filenames in result',
     )
     .option('-c, --config <path>', 'specify path to config file')
     .parse(process.argv);
 
-let options = evaluateOptions(program);
+const options = await evaluateOptions(program.opts());
 
-cataloger.readMarkdown(options.input).then(results => {
-    if (results.length === 0) {
-        logger.error(
-            'ERROR: No ".md" files found. Please verify input directory path'
-        );
-        process.exit(1);
-    }
+let results = await cataloger.readMarkdown(options.input);
 
-    if (options.deleteFilenameExt) {
-        results = results.map(item => {
-            item.filename = item.filename.slice(0, -3);
-            return item;
-        });
-    }
+if (results.length === 0) {
+    logger.error(
+        'ERROR: No ".md" files found. Please verify input directory path',
+    );
+    process.exit(1);
+}
 
-    if (options.sort) {
-        results.sort(options.sort);
-    }
+if (options.deleteFilenameExt) {
+    results = results.map((item) => {
+        item.filename = item.filename.slice(0, -3);
+        return item;
+    });
+}
 
-    if (options.normalize) {
-        results = options.normalize(results);
-    }
+if (options.sort) {
+    results.sort(options.sort);
+}
 
-    let output = JSON.stringify(results, null, 2);
-    fs.writeFileSync(options.output, output, 'utf8');
+if (options.normalize) {
+    results = options.normalize(results);
+}
 
-    logger.success('Complete!');
-});
+const output = JSON.stringify(results, null, 2);
+fs.writeFileSync(options.output, output, 'utf8');
+
+logger.success('Complete!');

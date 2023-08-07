@@ -2,9 +2,6 @@
 
 ## Easily generate a JSON array of markdown files and their inline metadata.
 
-[![NPM Version](https://img.shields.io/npm/v/node-md-meta-cataloger.svg?style=flat)](https://www.npmjs.com/package/node-md-meta-cataloger)
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-
 ## Installation
 
 `npm install --save node-md-meta-cataloger`
@@ -30,8 +27,8 @@
 
 #### Config File (--config)
 
--   Using the `--config` option you can specify a path to a JS config file that should return an object with "camelCased" versions of the existing CLI options (plus extra).
--   If an option exists in both the config file, and as a CLI option, the CLI option will receive priority.
+-   Using the `--config` option you can specify a path to a JS config file (an ES module) that should return a default object exported with "camelCased" versions of the existing CLI options (plus any extra).
+-   If an option exists in both the config file and as a CLI option, then the CLI option will receive priority.
 
 | Option            | Type     | Required | Description                                              |
 | ----------------- | -------- | -------- | -------------------------------------------------------- |
@@ -66,8 +63,8 @@ Example value of `result` above:
         filepath: 'path/to/folder/example.md',
         metadata: {
             title: 'Title',
-            author: 'Joshua'
-        }
-    }
+            author: 'Joshua',
+        },
+    },
 ];
 ```

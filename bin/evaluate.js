@@ -1,16 +1,24 @@
-let path = require('path');
-let logger = require('./logger');
+import path from 'path';
+import {logger} from './logger.js';
 
 const PROCESS_ROOT = process.cwd();
 
-function evaluateOptions(clOptions) {
+function errorAndExit(message) {
+    logger.error(message);
+    process.exit(1);
+}
+
+export async function evaluateOptions(clOptions) {
     let combinedOptions = clOptions;
 
     if (clOptions.config) {
-        let configOptions = require(path.resolve(
+        const configPath = `file://${path.resolve(
             PROCESS_ROOT,
-            clOptions.config
-        ));
+            clOptions.config,
+        )}`;
+
+        const configOptions = (await import(configPath)).default;
+
         combinedOptions = Object.assign(configOptions, clOptions);
     }
 
@@ -20,16 +28,9 @@ function evaluateOptions(clOptions) {
         errorAndExit('ERROR: No output path specified');
     } else if (!combinedOptions.output.endsWith('.json')) {
         errorAndExit(
-            `ERROR: Path "${combinedOptions.ouput}" does not end in ".json"`
+            `ERROR: Path "${combinedOptions.ouput}" does not end in ".json"`,
         );
     }
 
     return combinedOptions;
 }
-
-function errorAndExit(message) {
-    logger.error(message);
-    process.exit(1);
-}
-
-module.exports = {evaluateOptions};

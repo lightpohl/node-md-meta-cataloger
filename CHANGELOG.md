@@ -1,6 +1,6 @@
 # Change Log
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file.
 
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/lightpohl/node-md-meta-cataloger/compare/v1.2.6...v2.0.0) (2019-10-03)
